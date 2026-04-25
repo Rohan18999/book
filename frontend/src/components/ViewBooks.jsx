@@ -8,7 +8,7 @@ function ViewBooks() {
 
   async function bookFunction() {
     try {
-      const response = await axios.get("http://localhost:3000/viewbooks", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/viewbooks`, {
         withCredentials: true
       })
       setBooks(response.data)

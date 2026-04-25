@@ -17,7 +17,7 @@ function Signup() {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/signup",
+        `${import.meta.env.VITE_API_URL}/signup`,
         { username, email, password },
         { withCredentials: true }
       )

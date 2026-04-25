@@ -19,7 +19,7 @@ function AddBook() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/books",
+        `${import.meta.env.VITE_API_URL}/login`,
         { title, author, price },
         { withCredentials: true }
       );
@@ -43,7 +43,7 @@ function AddBook() {
   async function handleLogout() {
     try {
       await axios.post(
-        "http://localhost:3000/logout",
+        `${import.meta.env.VITE_API_URL}/logout`,
         {},
         { withCredentials: true }
       );
