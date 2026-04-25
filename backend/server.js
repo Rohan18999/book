@@ -5,6 +5,7 @@ const connectDB = require('./config/mongoose-connection.js')
 const indexRouter = require('./routes/indexRouter.js')
 const app = express()
 const cors = require('cors')
+const isLoggedIn = require('./middlewares/isLoggedIn.js')
 
 // extracts the content present in the env file
 require('dotenv').config()
@@ -23,7 +24,7 @@ app.use(cors({
 connectDB();
 
 // Routes
-app.use('/', indexRouter)
+app.use('/',isLoggedIn, indexRouter)
 
 
 
