@@ -65,7 +65,7 @@ function AddBook() {
             📚 Book Manager
           </h1>
           {message && (
-            <div className="fixed top-6 right-6 z-50">
+            <div className="fixed top-6 right-6 z-50 pointer-events-none">
               <div className="bg-[#020617] border border-green-500/30 text-green-400 px-5 py-3 rounded-xl shadow-xl flex items-center gap-3 backdrop-blur-md">
                 
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
