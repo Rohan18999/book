@@ -7,6 +7,13 @@ const bcrypt = require('bcrypt');
 
 require('dotenv').config()
 
+const cookieOptions = {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+    path: "/",
+}
+
 module.exports.authUser = async(req, res) => {
     try {
         const { email, password } = req.body
@@ -24,7 +31,7 @@ module.exports.authUser = async(req, res) => {
         }
 
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET)
-        res.cookie("token", token)
+        res.cookie("token", token, cookieOptions)
         return res.status(200).json({
             message: "User authenticated",
             email: user.email
@@ -56,7 +63,7 @@ module.exports.createUser = async(req, res) => {
          })
 
          const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET)
-         res.cookie("token", token)
+         res.cookie("token", token, cookieOptions)
 
         return res.status(200).json({
             message: "Successfully Created the User",
@@ -73,6 +80,6 @@ module.exports.createUser = async(req, res) => {
 }
 
 module.exports.removeUser = async(req, res) => {
-    res.clearCookie("token")
+    res.clearCookie("token", cookieOptions)
     return res.status(200).json({ message: "Logged out successfully" })
 }
