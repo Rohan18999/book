@@ -1,6 +1,6 @@
 # Bookshelf
 
-A full-stack book management app built with React, Vite, Express, MongoDB, and JWT-based authentication. Users can create an account, log in, add books to their personal collection, and view the books they have saved.
+A full-stack book management application built with React (Vite), Express, and MongoDB, featuring secure JWT-based authentication. Users can sign up, log in, add books to their personal collection, and view their saved items. The application is deployed using Vercel (frontend) and Render (backend), demonstrating end-to-end development and cloud deployment of a MERN stack project
 
 ## Features
 
