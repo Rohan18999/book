@@ -7,12 +7,10 @@ const bcrypt = require('bcrypt');
 
 require('dotenv').config()
 
-const isProduction = process.env.NODE_ENV === "production"
-
 const cookieOptions = {
     httpOnly: true,
-    secure: isProduction,
-    sameSite: isProduction ? "None" : "Lax",
+    secure: true,
+    sameSite: "None",
     path: "/",
 }
 
@@ -27,7 +25,7 @@ module.exports.authUser = async(req, res) => {
         }
         const isMatch = await bcrypt.compare(password, user.password)
         if(!isMatch){
-            return res.status(401).json({
+            res.status(401).json({
                 message: "Invalid Creditentials"
             })
         }
